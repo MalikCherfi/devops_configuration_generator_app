@@ -1,0 +1,6 @@
+services:
+  front:
+    build: .
+    container_name: devops-configuration-generator
+    ports:
+      - "3000:3000"
