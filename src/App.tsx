@@ -1,21 +1,7 @@
 import React from 'react';
 import './App.css';
-import { useEffect, useState } from 'react';
 
 const App: React.FC = () => {
-  const fetchData = async () => {
-    try {
-      const response = await fetch('http://localhost:8000/api/test');
-      const data = await response.json();
-      console.log(data);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  }
-
-  useEffect(() => {
-    fetchData();
-  }, []);
   return (
     <div className="App">
       <header className="App-header">
