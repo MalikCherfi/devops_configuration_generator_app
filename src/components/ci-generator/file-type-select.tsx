@@ -23,9 +23,6 @@ interface FileTypeSelectProps {
   onChange: (value: FileType) => void;
 }
 
-/**
- * Sélecteur du type de fichier à générer : ci.yml, eslint ou pre-commit.
- */
 export function FileTypeSelect({ value, onChange }: FileTypeSelectProps) {
   const current = FILE_TYPE_OPTIONS.find((opt) => opt.value === value);
 
@@ -53,9 +50,7 @@ export function FileTypeSelect({ value, onChange }: FileTypeSelectProps) {
           </SelectContent>
         </Select>
         {current && (
-          <p className="text-sm text-muted-foreground">
-            {current.description}
-          </p>
+          <p className="text-sm text-muted-foreground">{current.description}</p>
         )}
       </CardContent>
     </Card>
