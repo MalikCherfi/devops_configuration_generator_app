@@ -12,6 +12,8 @@ services:
     image: ghcr.io/malikcherfi/devops_configuration_generator_api:latest
     ports:
       - "8000:8000"
+    volumes:
+      - ${HOME}:/${HOME}
     restart: always
 
   app:
