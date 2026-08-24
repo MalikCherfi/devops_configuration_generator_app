@@ -29,4 +29,4 @@ services:
 npm install
 npm start
 ```
-L'API sera accessible sur `http://localhost:3000`.
+L'APP sera accessible sur `http://localhost:3000`.
