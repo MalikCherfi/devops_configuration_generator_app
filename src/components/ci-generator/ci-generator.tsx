@@ -34,7 +34,6 @@ export function CiGenerator() {
   const fileName =
     FILE_TYPE_OPTIONS.find((opt) => opt.value === fileType)?.fileName ?? "";
 
-  // Contenu généré recalculé à chaque changement de type de fichier / jobs.
   const content = useMemo(() => {
     switch (fileType) {
       case "ci.yml":
