@@ -74,7 +74,7 @@ export function FilePreview({ fileName, content }: FilePreviewProps) {
         </CardDescription>
       </CardHeader>
       
-      <CardContent>
+      <CardContent className="flex flex-1">
         <Editor
           height="100%"
           language={language}
