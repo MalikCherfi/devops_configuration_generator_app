@@ -19,12 +19,6 @@ interface JobsSelectorProps {
   disabled?: boolean;
 }
 
-/**
- * Liste des jobs GitHub Actions disponibles pour le ci.yml.
- * Chaque job est indépendant : cocher "ESLint" l'ajoute EN PLUS
- * des autres jobs déjà cochés (lint, test, build...), rien ne s'exclut.
- * Le job "install" est toujours ajouté automatiquement par le générateur.
- */
 export function JobsSelector({
   selectedJobs,
   onToggleJob,
