@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Check, Copy, Eye } from "lucide-react";
+import Editor from "@monaco-editor/react";
 import { Button } from "../ui/button";
 import {
   Card,
@@ -16,10 +17,30 @@ interface FilePreviewProps {
   content: string;
 }
 
-/**
- * Affiche le contenu du fichier qui sera envoyé au backend,
- * avec un bouton pour copier rapidement le contenu.
- */
+/** Détermine le langage Monaco en fonction de l'extension du fichier */
+function getLanguage(fileName: string): string {
+  const ext = fileName.split(".").pop()?.toLowerCase();
+  switch (ext) {
+    case "yml":
+    case "yaml":
+      return "yaml";
+    case "js":
+    case "mjs":
+    case "cjs":
+      return "javascript";
+    case "ts":
+    case "tsx":
+      return "typescript";
+    case "tf":
+    case "tfvars":
+      return "hcl";
+    case "json":
+      return "json";
+    default:
+      return "plaintext";
+  }
+}
+
 export function FilePreview({ fileName, content }: FilePreviewProps) {
   const [copied, setCopied] = useState(false);
 
@@ -29,8 +50,10 @@ export function FilePreview({ fileName, content }: FilePreviewProps) {
     setTimeout(() => setCopied(false), 1500);
   };
 
+  const language = getLanguage(fileName);
+
   return (
-    <Card>
+    <Card className="flex h-full flex-col">
       <CardHeader className="pb-3">
         <div className="flex items-center justify-between">
           <CardTitle className="flex items-center gap-2 text-base">
@@ -50,10 +73,25 @@ export function FilePreview({ fileName, content }: FilePreviewProps) {
           {fileName}
         </CardDescription>
       </CardHeader>
-      <CardContent>
-        <pre className="max-h-[420px] overflow-auto rounded-md bg-muted p-4 text-xs leading-relaxed">
-          <code className="font-mono">{content}</code>
-        </pre>
+      
+      <CardContent className="flex flex-1">
+        <Editor
+          height="100%"
+          language={language}
+          theme="vs-dark"
+          value={content}
+          options={{
+            readOnly: true,
+            minimap: { enabled: false },
+            scrollBeyondLastLine: false,
+            fontSize: 12,
+            lineNumbers: "on",
+            guides: { indentation: true },
+            automaticLayout: true,
+            domReadOnly: true,
+            tabSize: 2,
+          }}
+        />
       </CardContent>
     </Card>
   );

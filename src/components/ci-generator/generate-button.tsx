@@ -9,10 +9,6 @@ interface GenerateButtonProps {
   disabled: boolean;
 }
 
-/**
- * Bouton "Generate" : lance la génération du fichier et l'envoi
- * du payload (chemin + contenu) au backend.
- */
 export function GenerateButton({
   onClick,
   loading,
@@ -25,7 +21,7 @@ export function GenerateButton({
       ) : (
         <Sparkles className="mr-2 h-4 w-4" />
       )}
-      Generate
+      Générer
     </Button>
   );
 }

@@ -16,17 +16,13 @@ interface RepoPathFieldProps {
   onChange: (value: string) => void;
 }
 
-/**
- * Champ permettant de renseigner le chemin absolu du dossier local
- * (le repository) dans lequel le backend devra créer les fichiers.
- */
 export function RepoPathField({ value, onChange }: RepoPathFieldProps) {
   return (
     <Card>
       <CardHeader className="pb-3">
         <CardTitle className="flex items-center gap-2 text-base">
           <FolderGit2 className="h-4 w-4" />
-          Repository local
+          Répertoire local
         </CardTitle>
         <CardDescription>
           Chemin du dossier dans lequel les fichiers seront créés

@@ -1,11 +1,5 @@
 import type { JobDefinition } from "./types";
 
-/**
- * Jobs "optionnels" proposés à l'utilisateur pour le fichier ci.yml.
- * Le job "install" est toujours ajouté automatiquement en base, il n'est
- * donc pas listé ici : cocher un job l'ajoute EN PLUS des autres jobs déjà
- * cochés (ils ne s'excluent jamais entre eux).
- */
 export const AVAILABLE_JOBS: JobDefinition[] = [
   {
     id: "lint",
@@ -125,11 +119,6 @@ ${checkoutAndInstall}
   }
 }
 
-/**
- * Génère le contenu complet du ci.yml en fonction des jobs cochés.
- * Le job "install" est toujours présent en base.
- * Chaque job optionnel coché (dont "eslint") s'ajoute EN PLUS des autres.
- */
 export function generateCiYml(selectedJobIds: string[]): string {
   const header = `name: CI
 
@@ -151,7 +140,6 @@ jobs:
   return `${header}${INSTALL_JOB}\n${selectedBlocks}`.trimEnd() + "\n";
 }
 
-/** Template de base pour une config ESLint (flat config, projet TS/Next.js) */
 export function generateEslintConfig(): string {
   return `import js from "@eslint/js";
 import tseslint from "typescript-eslint";
@@ -174,7 +162,6 @@ export default [
 `;
 }
 
-/** Template de base pour un .pre-commit-config.yaml */
 export function generatePreCommitConfig(): string {
   return `repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks

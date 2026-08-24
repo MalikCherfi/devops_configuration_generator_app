@@ -14,10 +14,14 @@ import {
   generatePreCommitConfig,
   AVAILABLE_JOBS,
 } from "../../lib/templates";
-import { FILE_TYPE_OPTIONS, type FileType, type GeneratePayload } from "../../lib/types";
+import {
+  FILE_TYPE_OPTIONS,
+  type FileType,
+  type GeneratePayload,
+} from "../../lib/types";
 
 const DEFAULT_JOBS = AVAILABLE_JOBS.filter((job) => job.default).map(
-  (job) => job.id
+  (job) => job.id,
 );
 
 export function CiGenerator() {
@@ -30,7 +34,6 @@ export function CiGenerator() {
   const fileName =
     FILE_TYPE_OPTIONS.find((opt) => opt.value === fileType)?.fileName ?? "";
 
-  // Contenu généré recalculé à chaque changement de type de fichier / jobs.
   const content = useMemo(() => {
     switch (fileType) {
       case "ci.yml":
@@ -46,7 +49,7 @@ export function CiGenerator() {
 
   const handleToggleJob = (jobId: string, checked: boolean) => {
     setSelectedJobs((prev) =>
-      checked ? [...prev, jobId] : prev.filter((id) => id !== jobId)
+      checked ? [...prev, jobId] : prev.filter((id) => id !== jobId),
     );
   };
 
@@ -72,7 +75,7 @@ export function CiGenerator() {
   const canGenerate = repoPath.trim().length > 0;
 
   return (
-    <div className="grid gap-6 lg:grid-cols-2">
+    <div className="grid gap-6 lg:grid-cols-2 h-max lg:h-[calc(100vh)]">
       <div className="space-y-6">
         <RepoPathField value={repoPath} onChange={setRepoPath} />
         <FileTypeSelect value={fileType} onChange={setFileType} />
@@ -92,9 +95,7 @@ export function CiGenerator() {
         </div>
       </div>
 
-      <div>
-        <FilePreview fileName={fileName} content={content} />
-      </div>
+      <FilePreview fileName={fileName} content={content} />
     </div>
   );
 }
