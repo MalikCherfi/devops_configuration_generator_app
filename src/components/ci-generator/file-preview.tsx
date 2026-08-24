@@ -16,10 +16,6 @@ interface FilePreviewProps {
   content: string;
 }
 
-/**
- * Affiche le contenu du fichier qui sera envoyé au backend,
- * avec un bouton pour copier rapidement le contenu.
- */
 export function FilePreview({ fileName, content }: FilePreviewProps) {
   const [copied, setCopied] = useState(false);
 
