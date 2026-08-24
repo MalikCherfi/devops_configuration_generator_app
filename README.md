@@ -15,7 +15,7 @@ services:
     restart: always
 
   app:
-    image: ghcr.io/malikcherfi/repo-app:latest
+    image: ghcr.io/malikcherfi/devops_configuration_generator_app:latest
     ports:
       - "3000:3000"
     depends_on:
