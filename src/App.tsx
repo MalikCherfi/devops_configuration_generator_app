@@ -1,24 +1,25 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { CiGenerator } from "./components/ci-generator/ci-generator";
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <main className="mx-auto max-w-6xl space-y-6 p-6 md:p-10">
+        <div className="space-y-1">
+          <h1 className="text-2xl font-semibold tracking-tight">
+            Générateur de fichiers CI
+          </h1>
+          <p className="text-muted-foreground">
+            Choisissez un repository local, un type de fichier et les jobs à
+            inclure, puis générez le fichier à créer.
+          </p>
+        </div>
+
+        <CiGenerator />
+      </main>
     </div>
   );
-}
+};
 
 export default App;
