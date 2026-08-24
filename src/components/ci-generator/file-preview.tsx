@@ -30,7 +30,7 @@ export function FilePreview({ fileName, content }: FilePreviewProps) {
   };
 
   return (
-    <Card>
+    <Card className="flex h-full flex-col">
       <CardHeader className="pb-3">
         <div className="flex items-center justify-between">
           <CardTitle className="flex items-center gap-2 text-base">
@@ -50,9 +50,10 @@ export function FilePreview({ fileName, content }: FilePreviewProps) {
           {fileName}
         </CardDescription>
       </CardHeader>
-      <CardContent>
-        <pre className="max-h-[420px] overflow-auto rounded-md bg-muted p-4 text-xs leading-relaxed">
-          <code className="font-mono">{content}</code>
+
+      <CardContent className="flex flex-1 flex-col min-h-0">
+        <pre className="flex-1 overflow-auto rounded-md bg-muted p-4 text-xs leading-relaxed font-mono">
+          <code>{content}</code>
         </pre>
       </CardContent>
     </Card>
